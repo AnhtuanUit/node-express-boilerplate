@@ -21,6 +21,8 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
+    "swarm:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.swarm.yml up",
+    "swarm:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.swarm.yml up",
     "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
     "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
     "docker:test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up",

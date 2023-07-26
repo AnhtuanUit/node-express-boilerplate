@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  node-app:
+    container_name: node-app-swarm
+    image: 127.0.0.1:5000/node-app
