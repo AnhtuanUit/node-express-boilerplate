@@ -25,11 +25,12 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/node-express-boilerplate
+          set -e
+          cd ~/node-express-boilerplat
           git pull origin master
           git status
-          docker-compose build 
-          docker push 127.0.0.1:5000/node-app
+          docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.swarm.yml build
+          docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.swarm.yml push
           docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml -c docker-compose.swarm.yml stack-name
           docker service scale stack-name_node-app=6
           docker stack ps stack-name
