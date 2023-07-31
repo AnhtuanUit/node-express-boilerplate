@@ -27,7 +27,7 @@ jobs:
         script: |
           set -e
           cd ~/node-express-boilerplate
-          git pull origin master
+          GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/tmp/known_hosts' git pull origin master
           git status
           docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.swarm.yml build
           docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.swarm.yml push
