@@ -29,8 +29,8 @@ jobs:
           cd ~/node-express-boilerplate
           GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/tmp/known_hosts' git pull origin master
           git status
-          docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.swarm.yml build
-          docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.swarm.yml push
-          docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml -c docker-compose.swarm.yml stack-name
+          docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.swarm.yml build
+          docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.swarm.yml push
+          docker stack deploy -c docker-compose.yml -c docker-compose.dev.yml -c docker-compose.swarm.yml stack-name
           docker service scale stack-name_node-app=6
           docker stack ps stack-name
