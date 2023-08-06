@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up Docker
+        uses: docker/setup-docker@v2
+        with:
+          docker-layer-caching: true
+      
       - name: Checkout code
         uses: actions/checkout@v2
       
@@ -24,8 +29,9 @@ jobs:
         with:
           node-version: 14
 
-      - name: Run tests
+      - name: Test Using Docker Compose
         run: npm run docker:test
+
   # This workflow contains a single job called "build"
   deploy:
     # The type of runner that the job will run on
