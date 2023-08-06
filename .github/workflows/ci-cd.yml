@@ -25,7 +25,7 @@ jobs:
           node-version: 14
 
       - name: Run tests
-        run: npm docker:test
+        run: npm run docker:test
   # This workflow contains a single job called "build"
   deploy:
     # The type of runner that the job will run on
